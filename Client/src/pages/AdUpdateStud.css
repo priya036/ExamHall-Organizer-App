@@ -1,0 +1,46 @@
+.update-student-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(198, 200, 197);
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  /* Center the container horizontally */
+  padding: 20px;
+  /* Add some padding for better spacing */
+  border-radius: 30px;
+  box-shadow: 0 4px 8px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+input {
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.update-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.update-button:hover {
+  background-color: #0069d9;
+}
