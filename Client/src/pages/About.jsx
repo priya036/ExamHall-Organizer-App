@@ -20,7 +20,7 @@ function About() {
 
             <nav class="border-gray-200 bg-gray-200">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <div className="flex items-center" onClick={handleClick}>
+                    <div className="flex items-center" >
                         <img src={icon} className="h-14 mr-6" alt="Hall Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap">EXAM HALL</span>
                     </div>
