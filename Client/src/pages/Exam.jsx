@@ -12,7 +12,7 @@ const ExamDetailsPage = () => {
   useEffect(() => {
     const fetchExamDetails = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/exam');
+        const response = await fetch('https://examhall-apis.onrender.com/api/exam');
         const data = await response.json();
         setExamDetails(data);
       } catch (error) {

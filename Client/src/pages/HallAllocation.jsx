@@ -14,7 +14,7 @@ const EndSemHallAllocation = () => {
 
   const fetchExamData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/exam');
+      const response = await axios.get('https://examhall-apis.onrender.com/api/exam');
       setExamData(response.data);
     } catch (error) {
       console.error('Error fetching exam data:', error);
@@ -33,7 +33,7 @@ const EndSemHallAllocation = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`http://localhost:3000/api/exam/${selectedExam}/allocate`, {
+      const response = await axios.put(`https://examhall-apis.onrender.com//api/exam/${selectedExam}/allocate`, {
         rollNumbers: rollNumbers.split(',').map((rollNo) => rollNo.trim()),
         allocatedHall,
       });

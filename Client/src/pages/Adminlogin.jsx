@@ -20,7 +20,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:3000/api/admin/${id}`);
+      const response = await axios.get(`https://examhall-apis.onrender.com/api/admin/${id}`);
       console.log(response.data)
       if (response.data.facultyid === id && response.data.email === email && response.data.password === password) {
         console.log(response.data)

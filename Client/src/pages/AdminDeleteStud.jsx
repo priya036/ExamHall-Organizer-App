@@ -12,7 +12,7 @@ function AdminDeleteStudent() {
 
     const handleDelete = async () => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/user/${rollNo}`);
+            const response = await axios.delete(`https://examhall-apis.onrender.com/api/user/${rollNo}`);
             setMessage(response.data);
             setRollNo(''); // Clear the input field after successful deletion
         } catch (error) {

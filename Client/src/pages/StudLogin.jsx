@@ -21,7 +21,7 @@ const LoginPage = () => {
         // console.log(password);
 
         try {
-            const response = await axios.get(`http://localhost:3000/api/user/${rollNo}`);
+            const response = await axios.get(`https://examhall-apis.onrender.com/api/user/${rollNo}`);
             // console.log(response.data)
             if (response.data.rollno === rollNo && response.data.email === email && response.data.password === password) {
                 // console.log(response.data.department)

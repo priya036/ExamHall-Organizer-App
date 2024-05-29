@@ -21,7 +21,7 @@ class StudentTable extends React.Component {
 
     // Function to fetch student data from the API
     fetchStudents() {
-        axios.get('http://localhost:3000/api/user')
+        axios.get('https://examhall-apis.onrender.com/api/user')
             .then(response => {
                 this.setState({
                     students: response.data,

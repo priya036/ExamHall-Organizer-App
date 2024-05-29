@@ -11,7 +11,7 @@ const UpdateStudent = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`http://localhost:3000/api/user/${rollNo}`, {
+      const response = await axios.put(`https://examhall-apis.onrender.com/api/user/${rollNo}`, {
         hallnum: hallNum,
         seatNumber,
       });

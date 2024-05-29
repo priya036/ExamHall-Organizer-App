@@ -38,7 +38,7 @@ function AdminInsertStudents() {
 
   const handleSaveStudents = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/user', {
+      const response = await axios.post('https://examhall-apis.onrender.com/api/user', {
         students: students
       });
       console.log(response.data);
