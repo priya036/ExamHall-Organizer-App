@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,7 +7,7 @@ import './Login.css';
 import loginImage from '../images/login.jpg';
 
 const LoginPage = () => {
-    const history = useHistory();
+    const navigate = useNavigate(); // Use useNavigate for navigation
 
     const [rollNo, setRollNo] = useState('');
     const [email, setEmail] = useState('');
@@ -18,7 +18,6 @@ const LoginPage = () => {
 
         try {
             const response = await axios.get(`https://examhall-apis.onrender.com/api/user/${rollNo}`);
-
             if (response.data.rollno === rollNo && response.data.email === email && response.data.password === password) {
                 localStorage.setItem('rollNo', rollNo);
                 localStorage.setItem('emailu', email);
@@ -28,7 +27,8 @@ const LoginPage = () => {
                 localStorage.setItem('hallnumu', response.data.hallnum);
                 localStorage.setItem('seat', response.data.seatNumber);
 
-                history.push('/homeuser');
+                navigate('/homeuser'); // Navigate using navigate function
+
             } else {
                 toast('Invalid Credentials');
             }
@@ -49,7 +49,7 @@ const LoginPage = () => {
                         <h2>STUDENT LOGIN</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="form-groups">
-                                <label htmlFor="rollno">Roll Number:</label>
+                                <label htmlFor="rollno">Roll Number : </label>
                                 <input
                                     type="text"
                                     id="rollno"
@@ -59,7 +59,7 @@ const LoginPage = () => {
                                 />
                             </div>
                             <div className="form-groups">
-                                <label htmlFor="email">Email:</label>
+                                <label htmlFor="email">Email : </label>
                                 <input
                                     type="email"
                                     id="email"
@@ -69,7 +69,7 @@ const LoginPage = () => {
                                 />
                             </div>
                             <div className="form-groups">
-                                <label htmlFor="password">Password:</label>
+                                <label htmlFor="password">Password : </label>
                                 <input
                                     type="password"
                                     id="password"

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../pages/Adminl.css';
 import loginImage from '../images/login.jpg';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate(); // Use useNavigate for navigation
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ const LoginPage = () => {
         localStorage.setItem('name', response.data.name)
         localStorage.setItem('dept', response.data.department)
         localStorage.setItem('password', password);
-        history.push('/homeadmin');
+        navigate('/homeadmin'); // Navigate using navigate function
       }
       else {
         toast('Invalid Credentials');
