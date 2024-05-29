@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Bannerimg from '../images/banner.png'
 import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
+const contactPageAvailable = true;
 
 const ExamDetailsPage = () => {
   const [examDetails, setExamDetails] = useState([]);

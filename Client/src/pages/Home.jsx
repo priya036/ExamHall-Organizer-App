@@ -7,6 +7,7 @@ import hallticket from '../images/hallticket.png'
 import timetable from '../images/timetable.jpg'
 import view from '../images/view.jpg'
 import { Link } from 'react-router-dom'
+const contactPageAvailable = true;
 
 
 function Home() {

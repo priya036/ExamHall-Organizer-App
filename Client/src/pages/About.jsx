@@ -3,6 +3,7 @@ import Bannerimg from '../images/banner.png'
 import '../pages/home.css'
 import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
+const contactPageAvailable = true;
 
 function About() {
     const Rollno = localStorage.getItem('rollNo');

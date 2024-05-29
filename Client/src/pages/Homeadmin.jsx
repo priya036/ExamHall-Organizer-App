@@ -10,6 +10,7 @@ import insertstudent from '../images/insertstudent.jpg'
 import view from '../images/view.jpg'
 import deletestudent from '../images/delete.jpg'
 import { Link } from 'react-router-dom'
+const contactPageAvailable = true;
 
 
 

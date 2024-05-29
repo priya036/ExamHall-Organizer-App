@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AdUpdateStud.css';
 
+
 const UpdateStudent = () => {
   const [rollNo, setRollNo] = useState('');
   const [hallNum, setHallNum] = useState('');
