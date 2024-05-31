@@ -27,6 +27,18 @@ const LoginPage = () => {
             toast('Password must be at least 6 characters long.');
             return;
         }
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        
+        if (!hasUpperCase) {
+            toast.error('Password must contain at least one uppercase letter.');
+            return;
+        }
+        
+        if (!hasLowerCase) {
+            toast.error('Password must contain at least one lowercase letter.');
+            return;
+        }
 
         try {
             const response = await axios.post('https://examhall-apis.onrender.com/api/login', { rollno: rollNo, email: email, password: password });

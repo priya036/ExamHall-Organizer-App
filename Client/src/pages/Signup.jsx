@@ -26,6 +26,22 @@ const SignupPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (formData.password.length < 6) {
+            toast.error('Password must be at least 6 characters long.');
+            return;
+        }
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        
+        if (!hasUpperCase) {
+            toast.error('Password must contain at least one uppercase letter.');
+            return;
+        }
+        
+        if (!hasLowerCase) {
+            toast.error('Password must contain at least one lowercase letter.');
+            return;
+        }
         try {
             const res = await axios.post('https://examhall-apis.onrender.com/api/signup', formData);
             if (res.status === 201) {
