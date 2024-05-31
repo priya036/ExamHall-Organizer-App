@@ -26,7 +26,9 @@ const SignupPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (formData.password.length < 6) {
+        const { password } = formData;
+        
+        if (password.length < 6) {
             toast.error('Password must be at least 6 characters long.');
             return;
         }
