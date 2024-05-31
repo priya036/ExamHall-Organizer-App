@@ -1,7 +1,76 @@
-const { Hall, User, Admin, Exam, Allocation } = require('./schema');
+const { Hall, User, Admin, Exam, Allocation, Signup } = require('./schema');
 const cors = require('cors')
 const express = require('express');
 const app = express();
+
+//signup 
+module.exports.signup = async (req, res) => {
+    try {
+        const { name, rollno, email, password, department, mobno } = req.body;
+
+        const existingUser = await User.findOne({ email:req.params.email });
+
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists with this email.' });
+        }
+
+        // Use the Signup schema to validate the incoming data
+        const newSignup = new Signup({
+            name,
+            rollno,
+            email,
+            password,
+            department,
+            mobno
+        });
+
+        // Validate the signup data
+        await newSignup.validate();
+        await newSignup.save();
+
+        res.status(201).json({ message: 'User signed up successfully.' });
+    } catch (error) {
+        console.error('Error signing up:', error);
+        res.status(500).json({ message: 'An error occurred while signing up. Please try again.' });
+    }
+};
+
+
+
+//login
+module.exports.login = async (req, res) => {
+    try {
+        const { rollno, email, password } = req.body;
+
+        // Find the user in the signups collection
+        const user = await Signup.findOne({ rollno, email });
+
+        if (!user) {
+            return res.status(400).json({ message: 'User not found.' });
+        }
+
+        if (user.password !== password) {
+            return res.status(400).json({ message: 'Invalid credentials.' });
+        }
+
+        // Respond with success message and user data
+        res.status(200).json({
+            message: 'Login successful.',
+            user: {
+                name: user.name,
+                rollno: user.rollno,
+                email: user.email,
+                department: user.department,
+                mobno: user.mobno
+            }
+        });
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({ message: 'An error occurred while logging in. Please try again.' });
+    }
+};
+
+
 
 // User operations
 module.exports.insertStudent = async (req, res) => {
@@ -14,20 +83,7 @@ module.exports.insertStudent = async (req, res) => {
         res.status(500).json({ message: 'Error inserting students. Please try again.' });
     }
 };
-// module.exports.insertStudent = async (req, res) => {
-//     const student = new User({
-//         name: req.body.name,
-//         rollno: req.body.rollno,
-//         email: req.body.email,
-//         mobno: req.body.mobno,
-//         password: req.body.password,
-//         department: req.body.department,
-//         hallnum: req.body.hallnum,
-//         seatNumber: req.body.seatNumber
-//     })
-//     await student.save();
-//     res.send({ msg: "student Added Sucessfully !" });
-// }
+
 module.exports.deleteStudent = async (req, res) => {
     const student = await User.findOneAndDelete({ rollno: req.params.rno })
     if (student)

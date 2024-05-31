@@ -18,12 +18,14 @@ import AdProfile from './pages/AdProfile'
 import Exam from './pages/Exam'
 import HallAllocation from './pages/HallAllocation'
 import AdminDeleteStudent from './pages/AdminDeleteStud';
+import Signup from './pages/Signup';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LoginUser />}></Route>
+        <Route path='/signup' element={<Signup />} />
         <Route path='/homeuser' element={<Home />}></Route>
         <Route path='/homeadmin' element={<Homeadm />}></Route>
         <Route path='/admin' element={<LoginAdmin />}></Route>

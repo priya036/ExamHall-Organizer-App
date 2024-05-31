@@ -1,49 +1,65 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from 'react-router-dom'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 import loginImage from '../images/login.jpg';
 
 const LoginPage = () => {
-    const navigate = useNavigate(); // Use useNavigate for navigation
+    const navigation = useNavigate();
 
     const [rollNo, setRollNo] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Check if all fields are filled
+        if (!rollNo || !email || !password) {
+            toast('Please enter roll number, email, and password.');
+            return;
+        }
+
+        if (password.length < 6) {
+            toast('Password must be at least 6 characters long.');
+            return;
+        }
+
         try {
-            const response = await axios.get(`https://examhall-apis.onrender.com/api/user/${rollNo}`);
-            if (response.data.rollno === rollNo && response.data.email === email && response.data.password === password) {
-                localStorage.setItem('rollNo', rollNo);
-                localStorage.setItem('emailu', email);
-                localStorage.setItem('nameu', response.data.name);
-                localStorage.setItem('deptu', response.data.department);
-                localStorage.setItem('mobu', response.data.mobno);
-                localStorage.setItem('hallnumu', response.data.hallnum);
-                localStorage.setItem('seat', response.data.seatNumber);
-
-                navigate('/homeuser'); // Navigate using navigate function
-
+            const response = await axios.post('https://examhall-apis.onrender.com/api/login', { rollno: rollNo, email: email, password: password });
+            // Check if the login was successful
+            if (response.status === 200) {
+                localStorage.setItem('rollNo', response.data.user.rollno);
+                localStorage.setItem('emailu', response.data.user.email);
+                localStorage.setItem('nameu', response.data.user.name)
+                localStorage.setItem('deptu', response.data.user.department)
+                localStorage.setItem('mobu', response.data.user.mobno)
+                // Redirect to homeuser page after successful login
+                navigation('/homeuser')
             } else {
                 toast('Invalid Credentials');
             }
-        } catch (err) {
-            console.log(err);
+        }
+        catch (err) {
+            console.error(err);
+            toast('An error occurred. Please try again.');
         }
     };
 
+
     return (
+
         <>
             <div className="containers">
                 <div className="login-containers">
                     <div className="image-containers">
                         <img src={loginImage} alt="Login" />
-                        <p>Login as <Link to='/admin'>Faculty click here!</Link></p>
+                        <p>Login as  <Link to='/admin' style={{ color: 'blue', textDecoration: 'underline' }}>Faculty click here!</Link></p>
+                        <p>Don't have an account? <Link to='/signup' style={{ color: 'blue', textDecoration: 'underline' }}>Sign up here</Link></p>
+
                     </div>
                     <div className="form-containers">
                         <h2>STUDENT LOGIN</h2>
@@ -85,7 +101,7 @@ const LoginPage = () => {
             </div>
             <ToastContainer />
         </>
-    );
+    )
 };
 
 export default LoginPage;

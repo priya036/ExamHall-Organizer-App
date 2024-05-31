@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4caf50, #81c784);
+}
+
+.signup-form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.signup-form-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+    background-color: #45a049;
+}
+
+.signup-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form-container form .form-group input:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+.signup-form-container form .form-group input::placeholder {
+    color: #aaa;
+}
+
+.signup-form-container form .form-group input[type="password"] {
+    letter-spacing: 1px;
+}

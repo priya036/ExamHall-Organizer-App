@@ -33,7 +33,7 @@ const EndSemHallAllocation = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.put(`https://examhall-apis.onrender.com//api/exam/${selectedExam}/allocate`, {
+      const response = await axios.put(`https://examhall-apis.onrender.com/api/exam/${selectedExam}/allocate`, {
         rollNumbers: rollNumbers.split(',').map((rollNo) => rollNo.trim()),
         allocatedHall,
       });

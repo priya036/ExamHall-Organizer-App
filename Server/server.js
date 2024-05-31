@@ -11,6 +11,9 @@ connectdb()
     .then(() => { console.log('db connected') })
     .catch((err) => { console.log(err) });
 
+//signup operation
+app.post('/api/signup', controller.signup);
+app.post('/api/login', controller.login);
 
 //admin operation
 app.get('/api/admin', controller.getallAdmin);

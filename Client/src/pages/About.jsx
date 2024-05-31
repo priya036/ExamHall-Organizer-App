@@ -15,9 +15,6 @@ function About() {
                 <img src={Bannerimg} alt="load" />
             </div>
 
-
-
-
             <nav class="border-gray-200 bg-gray-200">
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div className="flex items-center" >

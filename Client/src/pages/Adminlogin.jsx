@@ -24,7 +24,7 @@ const LoginPage = () => {
         localStorage.setItem('name', response.data.name)
         localStorage.setItem('dept', response.data.department)
         localStorage.setItem('password', password);
-        navigate('/homeadmin'); // Navigate using navigate function
+        navigate('/homeadmin'); 
       }
       else {
         toast('Invalid Credentials');
@@ -41,7 +41,7 @@ const LoginPage = () => {
         <div className="login-containers">
           <div className="image-containers">
             <img src={loginImage} alt="Login" />
-            <p>Login as  <Link to='/'>student click here!</Link></p>
+            <p>Login as  <Link to='/' style={{ color: 'blue', textDecoration: 'underline' }}>student click here!</Link></p>
           </div>
           <div className="form-containers">
             <h2>FACULTY LOGIN</h2>
