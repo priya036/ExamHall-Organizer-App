@@ -5,3 +5,11 @@ Home page for Students
 
 Live demo
 https://examhall-organizer-app.onrender.com/
+
+# Technologies 
+<ul>
+  <li>ReactJS[Hooks]</li>
+  <li>NodeJs</li>
+  <li>ExpressJs</li>
+  <li>MongoDB</li>
+</ul>
